@@ -32,7 +32,79 @@ struct node{
 	int data;
 	struct node *next;
 };
+
 int merge_circularlists(struct node **head1, struct node **head2){
 	//Returns Length of merged Sorted circular SLL and also points *head1 to final SLL .
+	if (head1 == NULL || head2 == NULL)
 	return -1;
+	return 0;
+/*	struct node **temp1 = NULL, **temp2 = NULL, **mergelist = NULL, **head3 = NULL;
+	int tot=0;
+	if (head1==NULL||head2==NULL)
+	return -1;
+	if (head1 == NULL)
+	{
+		while (head1 != NULL)
+		{
+			head1 = head1->next;
+			tot++;
+		}
+		return tot;
+	}
+	else if (head2 == NULL)
+	{
+		while (head2 != NULL)
+		{
+			head2 = head2->next;
+			tot++;
+		}
+		return tot;
+	}
+	temp1 = head1;
+	temp2 = head2;
+	mergelist = (struct node **)malloc(sizeof(struct node));
+	head3 = mergelist;
+	while (temp1 != NULL&&temp2 != NULL)
+	{
+		if (temp1->data<temp2->data)
+		{
+			mergelist->next = temp1;
+			temp1 = temp1->next;
+		}
+		else if (temp1->data>temp2->data)
+		{
+			mergelist->next = temp2;
+			temp2 = temp2->next;
+		}
+		else
+		{
+			mergelist->next = temp2;
+			mergelist = mergelist->next;
+			temp2 = temp2->next;
+			mergelist->next = temp1;
+			temp1 = temp1->next;
+			tot++;
+		}
+		mergelist = mergelist->next;
+		tot++;
+	}
+	head3 = head3->next;
+	while (temp1 != NULL)
+	{
+		mergelist->next = temp1;
+		temp1 = temp1->next;
+		mergelist = mergelist->next;
+		tot++;
+	}
+	while (temp2 != NULL)
+	{
+		mergelist->next = temp2;
+		temp2 = temp2->next;
+		mergelist = mergelist->next;
+		tot++;
+	}
+	mergelist ->next=head1;
+	mergelist = head3;
+	return tot;
+	*/
 }

@@ -27,8 +27,61 @@ struct node{
 	int data;
 	struct node *next;
 };
+void initialise(int date[3][3])
+{
+	int i;
+	for (i = 0; i < 3; i++)
+	{
+		date[i][0] = 0;
+		date[i][1] = 0;
+	}
+}
+int calcDate(struct node *date1head, struct node *date2head, int date[3][3])
+{
+	int i,years=0,days=0,months=0;
+	i = 2;
+	initialise(date);
+	while (i)
+	{
 
-
+		date[0][0] = date[0][0]*10+date1head->data;
+		date[0][1] = date[0][1]*10+date2head->data;
+		date1head=date1head->next;
+		date2head = date2head->next;
+		i--;
+	}
+	i = 2;
+	while (i)
+	{
+		date[0][0] = date[0][0] * 10 + date1head->data;
+		date[0][1] = date[0][1] * 10 + date2head->data;
+		date1head = date1head->next;
+		date2head = date2head->next;
+		i--;
+	}
+	i = 4;
+	date[2][0] = 0;
+	date[2][1] = 0;
+	while (i)
+	{
+		date[2][0] = date[2][0]*10+date1head->data;
+		date[2][1] = date[2][1] * 10 + date2head->data;
+		i--;
+		date1head = date1head->next;
+		date2head = date2head->next;
+	}
+	years = date[2][1] - date[2][0];
+	years < 0 ? years*-1 : years*1;
+	months = date[1][1] - date[1][0];
+	months < 0 ? months*-1 : months * 1;
+	days = date[0][1] - date[0][0];
+	days < 0 ? days*-1 : days * 1;
+	return (years*365+months*30+days);
+}
 int between_days(struct node *date1head, struct node *date2head){
+	int date[3][3];
+	if (date1head==NULL||date2head==NULL)
 	return -1;
+	return calcDate(date1head,date2head,date);
+
 }
